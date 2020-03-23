@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+	{% block title %} RESUME {% endblock %}
+	{% block head %}
+		<link rel="stylesheet" href="../static/css/resume.css">
+		<script>
+			  $( function() {
+				    $( "tbody" ).sortable();
+				  	});
+		</script>
+	{% endblock %}
+	{% block content %}
+		
+ {% set ns = namespace(stars = "*") %}
+			{% if user.plays %}
+			<h2>THEATER</h2>
+				<table>
+					<tbody>
+						{% for play in ordered_plays %}
+								<tr class="project_container {{ 'hidden_element' if play.hidden else '' }}" id="{{ play.play_id }}">
+									<td>
+										<img class="include_project icon_button show_project_button"
+												 data-project-id="{{ play.play_id }}"
+												 data-project-type="play"
+												 src="../static/icons/add.svg"/>
+										<img class="delete_project icon_button hide_project_button"
+												 data-project-id="{{ play.play_id }}"
+												 data-project-type="play"
+												 src="../static/icons/remove.svg"/>
+										<div class="play">
+									</td>
+									<td>
+										{% if play.awards %}
+											{{ ns.stars }}
+											{% set ns.stars = ns.stars ~ "*" %}
+										{% endif %}
+											<span class="editable_project" id="edit_play_title_{{ play.play_id }}">{{ play.title }}</span>
+										{% if play.playwright %}
+											<span class="editable_project" id="edit_play_playwright_{{ play.play_id }}">({{ play.playwright }})</span>
+										{% else %}
+											(<span class="editable_project" id="edit_play_playwright_{{ play.play_id }}"></span>)
+										{% endif %}
+										<br>
+										</div>
+									</td>
+									<td>
+										<span class="editable_project" id="edit_play_character_{{ play.play_id }}">{{ play.character }}</span>
+										<br>
+									</td>
+									<td>
+										<span class="editable_project" id="edit_play_theater_{{ play.play_id }}">{{ play.theater }}</span>
+											{% if play.director %}
+												<span class="editable_project" id="edit_play_director_{{ play.play_id }}">({{ play.director }})</span>
+											{% else %}
+												(<span class="editable_project" id="edit_play_director_{{ play.play_id }}"></span>)
+											{% endif %}
+										<br>
+										</td>
+									</td>
+								</tr>
+						{% endfor %}
+						<!-- <form action="/add_play" method="POST">
+							<tr>
+								<td>
+									<input type="text" name="title" placeholder="title*" required><input type="text" name="playwright" placeholder="(playwright)"><input type="text" name="link" placeholder="link?">
+								</td>
+								<td><input type="text" name="character" placeholder="character*" required></td>
+								<td>
+									<input type="text" name="theater" placeholder="theater*" required><input type="text" name="director" placeholder="(director)">
+								</td>
+								<td><input type="submit" value="&#65291;" class="btn btn-default"></td>
+							</tr> -->
+						</form>
+					</tbody>
+				</table>
+				<br>
+				<button class="btn btn-default" id="save_play_order"> 	Save Order
+				</button>
+			{% endif %}
+
+			{% with messages = get_flashed_messages() %}
+		      		{% if messages %}
+		          		<div class=flashes>
+		            		{% for message in messages %}
+		                		<h3>{{ message }}</h3>
+		            		{% endfor %}
+		          		</div>
+		      		{% endif %}
+	  		{% endwith %}
+
+			{% set ns = namespace(stars = "*") %}
+			{% if user.awards %}
+			<br><br>
+				{% for play in ordered_plays %}
+					{% if play.awards %}
+						{{ ns.stars }}
+						{% set ns.stars = ns.stars ~ "*" %}
+						{% for award in play.awards %}
+							{% if not award.hidden %}
+								<button class="delete_project" data-project-id="{{ award.award_id }}" data-project-type="award"> &times;</button>
+									{{ award.award}} {{ award.winner_or_nominee }}: {{ award.category }}
+							{% else %}
+								<button class="include_project" data-project-id="{{ award.award_id }}" data-project-type="award"> &plus;</button>
+									<span class="hidden_element">{{ award.award}} {{ award.winner_or_nominee }}: {{ award.category }}</span>
+							{% endif %}
+								<br>
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+
+			<br><br>
+				<div class="update_site">
+					<h2>ADD PLAY</h2>
+						<form action="/add_play" method="POST">
+							<input type="text" name="title" placeholder="title*" required>
+							<input type="text" name="playwright" placeholder="playwright">
+							<input type="text" name="character" placeholder="character*" required>
+							<input type="text" name="theater" placeholder="theater*" required>
+							<input type="text" name="director" placeholder="director">
+							<input type="text" name="link" placeholder="link">
+							<br><br>
+							<input type="submit" value="Add Play" class="btn btn-default">	
+						</form>
+				</div>
+
+			<div id="readings">
+				{% if user.readings %}
+				<br><br>
+				<h2>READINGS/WORKSHOPS</h2>
+						&#10022; 
+						{% for reading in user.readings %}
+
+
+<!-- 							<div class="project_container {{ 'hidden_element' if reading.hidden else '' }}"  id="{{ reading.reading_id }}">
+								<img class="include_project icon_button show_project_button"
+										 data-project-id="{{ reading.reading_id }}"
+										 data-project-type="reading"
+										 src="../static/icons/add.svg"/>
+								<img class="delete_project icon_button hide_project_button"
+										 data-project-id="{{ reading.reading_id }}"
+										 data-project-type="reading"
+										 src="../static/icons/remove.svg"/>
+								{{ reading.reading }} &#10022;
+							</div> -->
+							{% if not reading.hidden %}
+								<button class="delete_project toggle_reading" data-project-id="{{ reading.reading_id }}" data-project-type="reading"> &times;</button>
+								{{ reading.reading }} &#10022;
+							{% else %}
+								<button class="include_project toggle_reading" data-project-id="{{ reading.reading_id }}" data-project-type="reading"> &plus;</button>
+								<span class="hidden_element">{{ reading.reading }} &#10022;</span>
+							{% endif %}
+						{% endfor %} 
+						<!-- <form action="/add_reading" id="add_reading" method="POST">
+							<input type="text" name="reading" placeholder="reading" required>
+							<input type="submit" value="&#65291;" class="btn btn-default">	
+						</form> -->
+				{% endif %}
+
+
+				<br><br>
+					<div class="update_site">
+						<form action="/add_reading" method="POST">
+							<input type="text" name="reading" placeholder="reading" required>
+							<input type="submit" value="Add Reading" class="btn btn-default">	
+						</form>
+					</div>
+			</div>
+
+
+			{% if user.films %}
+			{% set ns = namespace(stars = "*") %}
+			<br><br>
+			<h2>TV/FILM</h2>
+			<table>
+				<tbody>
+					{% for film in ordered_films %}
+						<tr class="project_container {{ 'hidden_element' if film.hidden else '' }}" id="{{ film.film_id }}">
+									<td>
+										<img class="include_project icon_button show_project_button"
+												 data-project-id="{{ film.film_id }}"
+												 data-project-type="film"
+												 src="../static/icons/add.svg"/>
+										<img class="delete_project icon_button hide_project_button"
+												 data-project-id="{{ film.film_id }}"
+												 data-project-type="film"
+												 src="../static/icons/remove.svg"/>
+										<div class="film">
+									</td>
+									<td>
+										{% if film.awards %}
+											{{ ns.stars }}
+											{% set ns.stars = ns.stars ~ "*" %}
+										{% endif %}
+											<span class="editable_project" id="edit_film_title_{{ film.film_id }}">{{ film.title }}</span>
+										{% if film.specifier %}
+											<span class="editable_project" id="edit_film_specifier_{{ film.film_id }}">({{ film.specifier }})</span>
+										{% else %}
+											(<span class="editable_project" id="edit_film_specifier_{{ film.film_id }}"></span>)
+										{% endif %}
+										<br>
+										</div>
+									</td>
+									<td>
+										<span class="editable_project" id="edit_film_character_{{ film.film_id }}">{{ film.character }}</span>
+										<br>
+									</td>
+									<td>
+										<span class="editable_project" id="edit_film_producer_{{ film.film_id }}">{{ film.producer }}</span>
+											{% if film.director %}
+												<span class="editable_project" id="edit_film_director_{{ film.film_id }}">({{ film.director }})</span>
+											{% else %}
+												(<span class="editable_project" id="edit_film_director_{{ film.film_id }}"></span>)
+											{% endif %}
+										<br>
+										</td>
+									</td>
+								</tr>
+						{% endfor %}
+						</form>
+					</tbody>
+				</table>
+				<br>
+				<button class="btn btn-default" id="save_film_order"> 	Save Order
+				</button>
+
+				{% with messages = get_flashed_messages() %}
+		      		{% if messages %}
+		          		<div class=flashes>
+		            		{% for message in messages %}
+		                		<h3>{{ message }}</h3>
+		            		{% endfor %}
+		          		</div>
+		      		{% endif %}
+	  			{% endwith %}
+
+<!-- 
+				<table>
+					<tbody>
+						{% for film in user.films %}
+							<tr id="{{film.film_id}}">
+								<td>
+									<button class="delete_project" data-project-id="{{ film.film_id }}" data-project-type="film"> &times;</button>
+									{% if film.film_awards %}
+										{{ ns.stars }}
+										{% set ns.stars = ns.stars ~ "*" %}
+									{% endif %}
+									{{ film.title }}
+										{% if film.specifier %}
+											({{ film.specifier }})
+										{% endif %}
+								</td>
+								<td>
+									{{ film.character }}
+								</td>
+								<td>
+									{{ film.producer }}
+										{% if film.director %}
+											({{ film.director }})
+										{% endif %}
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table> -->
+			{% endif %}
+
+			{% set ns = namespace(stars = "*") %}
+			{% if user.film_awards %}
+			<br><br>
+				{% for film in user.films %}
+					{% if film.film_awards %}
+						{{ ns.stars }}
+						{% set ns.stars = ns.stars ~ "*" %}
+						{% for film_award in film.film_awards %}
+							{{ film_award.film_award}} {{ film_award.winner_or_nominee }}: {{ film_award.category }}
+							<br>
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+
+			<br><br>
+				<div class="update_site">
+					<h2>ADD FILM/TV</h2>
+						<form action="/add_film" method="POST">
+							<input type="text" name="title" placeholder="title*" required>
+							<input type="text" name="details" placeholder="details">
+							<input type="text" name="character" placeholder="character*" required>
+							<input type="text" name="producer" placeholder="producer*" required>
+							<input type="text" name="director" placeholder="director">
+							<br><br>
+							<input type="submit" value="Add Film/TV" class="btn btn-default">	
+						</form>
+				</div>
+
+		
+			{% if user.trainings %}
+			<br><br>
+			<h2>TRAINING</h2>
+					&#10022; 
+					{% for training in user.trainings %}
+						{% if not training.hidden %}
+							<button class="delete_project" data-project-id="{{ training.training_id }}" data-project-type="training"> &times;</button>
+							{{ training.training }} &#10022; 
+						{% else %}
+							<button class="include_project" data-project-id="{{ training.training_id }}" data-project-type="training"> &plus;</button>
+							<span class="hidden_element">{{ training.training }} &#10022; </span>
+						{% endif %}
+					{% endfor %}
+					<!-- <form action="/add_training" method="POST">
+						<input type="text" name="training" placeholder="training" required>
+						<input type="submit" value="&#65291;" class="btn btn-default"">	
+					</form> -->
+			{% endif %}
+
+			<br><br>
+				<div class="update_site">
+					<form action="/add_training" method="POST">
+						<input type="text" name="training" placeholder="training" required>
+						<input type="submit" value="Add Training" class="btn btn-default">	
+					</form>
+				</div>
+			<br><br>
+				<div class="update_site">
+						<h2>ADD AWARD</h2>
+							<form action="/add_award" method="POST">
+								<input type="text" name="award" placeholder="award*" required>
+								<input type="text" name="winner_or_nominee" placeholder="winner/nominee?*" required>
+								<input type="text" name="category" placeholder="category*" required>
+								<br><br>
+								<select name="title">
+									{% for play in user.plays %}
+								  		<option value="{{ play.title }}">{{ play.title }}</option>
+								  	{% endfor %}
+								  	{% for film in user.films %}
+								  		<option value="{{ film.title }}">{{ film.title }}</option>
+								  	{% endfor %}
+							  	</select>
+								<br><br>
+								<input type="submit" value="Add Award" class="btn btn-default">	
+							</form>
+				</div>
+			<script src="/static/js/scripts.js"></script>
+		{% endblock %}

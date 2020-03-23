@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+	{% block title %} PHOTOS {% endblock %}
+	{% block head %}
+		 <link rel="stylesheet" href="../static/css/photos.css">
+	{% endblock %}
+		{% block content %}
+			{% if "photos" not in pages %}
+				<h1> &#10039;This Page Will Not Appear On Live Site&#10039; </h1>
+			{% endif %}
+			<div>
+				{% if user.photos %}	
+					<h2>PRODUCTION PHOTOS</h2>
+					{% for photo in ordered_photos %}
+						{% if not photo.hidden %}
+							<img src="{{ photo.photo }}" class="show_photo">
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+				{% if user.misc_photos %}
+					<h2>MISC PHOTOS</h2>
+					{% for misc_photo in ordered_misc_photos %}
+						{% if not misc_photo.hidden %}
+						<img src="{{ misc_photo.misc_photo }}" class="show_photo">
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+				<br><br>
+				{% if user.headshots %}	
+					<h2>HEADSHOTS</h2>
+					{% for headshot in ordered_headshots %}
+						{% if not headshot.hidden %}
+						<img src="{{ headshot.headshot }}" class="show_photo">
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+				<br><br>
+			</div>
+		{% endblock %}

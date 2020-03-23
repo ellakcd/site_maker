@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+	{% block title %} RESUME {% endblock %}
+		{% block content %}
+			{% set ns = namespace(stars = "*") %}
+			{% if user.plays %}
+			<h2>THEATER</h2>
+				<table>
+					<tr>
+						<td>
+							{% for play in ordered_plays %}
+								{% if play.awards %}
+									{{ ns.stars }}
+									{% set ns.stars = ns.stars ~ "*" %}
+								{% endif %}
+								{% if play.link %}
+									<a href="{{ play.link }}">{{ play.title }}</a>
+								{% else %}
+									{{ play.title }}
+								{% endif %}
+								{% if play.include_playwright %}
+									({{ play.playwright }})
+								{% endif %}
+								<br>
+							{% endfor %}
+						</td>
+						<td>
+							{% for play in ordered_plays %}
+								{{ play.character }}
+								<br>
+							{% endfor %}
+						</td>
+						<td>
+							{% for play in ordered_plays %}
+								{{ play.theater }}
+									{% if play.include_director %}
+										({{ play.director }})
+									{% endif %}
+								<br>
+							{% endfor %}
+						</td>
+					</tr>
+				</table>
+			{% endif %}
+
+			{% set ns = namespace(stars = "*") %}
+			{% if user.awards %}
+				{% for play in user.plays %}
+					{% if play.awards %}
+						{{ ns.stars }}
+						{% set ns.stars = ns.stars ~ "*" %}
+						{% for award in play.awards %}
+							{{ award.award}} {{ award.winner_or_nominee }}: {{ award.category }}
+							<br>
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		<!-- 	TESTESTEST
+			{% block add_play %} content goes here {% endblock %} -->
+
+			{% if user.readings %}
+			<br><br>
+			<h2>READINGS/WORKSHOPS</h2>
+					&#10022; {% for reading in user.readings %}
+					{{ reading.reading }} &#10022;
+					{% endfor %}
+			{% endif %}
+
+			{% if user.films %}
+			{% set ns = namespace(stars = "*") %}
+			<br><br>
+			<h2>TV/FILM</h2>
+				<table>
+					<tr>
+						<td>
+							{% for film in user.films %}
+								{% if film.film_awards %}
+									{{ ns.stars }}
+									{% set ns.stars = ns.stars ~ "*" %}
+								{% endif %}
+								{{ film.title }}
+									{% if film.specifier %}
+										({{ film.specifier }})
+									{% endif %}
+								<br>
+							{% endfor %}
+						</td>
+						<td>
+							{% for film in user.films %}
+								{{ film.character }}
+								<br>
+							{% endfor %}
+						</td>
+						<td>
+							{% for film in user.films %}
+								{{ film.producer }}
+									{% if film.director %}
+										({{ film.director }})
+									{% endif %}
+								<br>
+							{% endfor %}
+						</td>
+					</tr>
+				</table>
+			{% endif %}
+
+			{% set ns = namespace(stars = "*") %}
+			{% if user.film_awards %}
+				{% for film in user.films %}
+					{% if film.film_awards %}
+						{{ ns.stars }}
+						{% set ns.stars = ns.stars ~ "*" %}
+						{% for film_award in film.film_awards %}
+							{{ film_award.film_award}} {{ film_award.winner_or_nominee }}: {{ film_award.category }}
+							<br>
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+
+			{% if user.trainings %}
+			<br><br>
+			<h2>TRAINING</h2>
+					&#10022; {% for training in user.trainings %}
+						{{ training.training }} &#10022; 
+					{% endfor %}
+			{% endif %}
+		{% endblock %}

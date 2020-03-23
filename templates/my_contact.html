@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+	{% block title %} CONTACT {% endblock %}
+	{% block head %}
+		 <link rel="stylesheet" href="../static/css/contact.css">
+	{% endblock %}
+		{% block content %}
+		{% if user.agencies %}
+			<h2> REPRESENTATION </h2>
+			<div id="representation_section">
+	  				{% for agency in user.agencies %}
+	  					<div class="agency_container">
+		  					<h2> {{ agency.agency }} </h2>
+		  					{% for agent in agency.agents %}
+		  						{% if agent in user.agents %}
+			  						<div class="agent_container">
+			  						{% if not agent.hidden %}
+					  					<form action="/hide_agent" method="POST">
+					  						<label for="hide-{{ agent.agent_id }}">
+					  						<input type="hidden" name="agent_id" value="{{ agent.agent_id }}">
+					  						<input type="submit" value="hide_agent" name="hide" id="hide-{{ agent.agent_id }}" class="hide_button" style="display:none;">
+					  						<div class="icon_button hide_agency_button">
+						    					<img src="../static/icons/remove.svg"/>
+						    				</div>
+					  						</label>
+					  					</form>
+				  						<h4>{{ agent.agent }}</h4>
+				  						{{ agent.agent_id }}
+				  						email: {{ agent.email }}
+				  						<br>
+				  						phone: {{ agent.phone }}
+				  						{% else %}
+				  						<div class="hidden_element">
+					  						<form action="/show_agent" method="POST">
+						  						<label for="show-{{ agent.agent_id }}">
+						  						<input type="hidden" name="agent_id" value="{{ agent.agent_id }}">
+						  						<input type="submit" value="show_agent" name="show" id="show-{{ agent.agent_id }}" class="show_button" style="display:none;">
+						  						<div class="icon_button show_agency_button">
+							    					<img src="../static/icons/add.svg"/>
+							    				</div>
+						  						</label>
+						  					</form>
+					  						<h4>{{ agent.agent }}</h4>
+					  						{{ agent.agent_id }}
+					  						email: {{ agent.email }}
+					  						<br>
+					  						phone: {{ agent.phone }}
+					  					</div>
+				  						{% endif %}
+				  					</div>
+				  				{% endif %}
+			  				{% endfor %}
+		  				</div>
+	  				{% endfor %}
+	  		</div>
+	  	{% endif %}
+	  	<br><br>
+				<div class="update_site">
+					<h2>ADD REPRESENTATION</h2>
+						<form action="/add_rep" method="POST">
+							<input type="text" name="agency" placeholder="agency*" required>
+							<input type="text" name="agent" placeholder="agent*" required>
+							<input type="email" name="email" placeholder="email*" required>
+							<input type="text" name="phone" placeholder="phone*" required>
+							<br><br>
+							<input type="submit" value="Add Representation" class="btn btn-default">	
+						</form>
+				</div>
+				<div id="contact_form_border">
+					<div id="contact_form">
+						<form action="/send_message" method="POST">
+									<div class="centered">
+										<h3>&#10022; Contact {{ user.name }} &#10022;<h3>
+										<input type="hidden" name=user_id value="{{ user.user_id }}">
+										<br>
+										<input type="text" class="contact_input" placeholder="name*" name="name" required>
+										<br>
+										<input type="email" class="contact_input" placeholder="email*" name="email" required>
+										<br>
+										<input type="text" class="contact_input" placeholder="subject*" name="subject" required>
+										<br>
+										<textarea maxlength="500" class="contact_input" name="message" required>
+										</textarea>
+										<br><br>
+										<br>
+										<input type="submit" value="&#9993; send &#9993;" id="send_button" class="btn btn-default">
+									</div>	
+						</form>
+					</div>
+				</div>
+				{% with messages = get_flashed_messages() %}
+		      		{% if messages %}
+		          		<div class=flashes>
+		            		{% for message in messages %}
+		                		<h3>{{ message }}</h3>
+		            		{% endfor %}
+		          		</div>
+		      		{% endif %}
+	  			{% endwith %}
+		{% endblock %}

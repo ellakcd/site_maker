@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+	{% block title %} PRESS {% endblock %}
+		{% block head %}
+		 	<link rel="stylesheet" href="../static/css/press.css">
+			<script>
+				  $( function() {
+					    $( ".sortable" ).sortable();
+					  } );
+			</script>
+			</script>
+		{% endblock %}
+		{% block content %}
+			<div>
+				{% if user.reviews %}
+					<h2>REVIEWS</h2>
+					<br>
+						<div id="sortable_review_projects" class="sortable">
+							{% for play in ordered_plays %}
+								{% if play.reviews %}
+									<div id="{{ play.play_id }}">
+										<!-- <div class="sortable" > -->
+											<h4 class="text_left">{{ play.title }}</h4>
+												<!-- <div id="sortable_reviews" class="sortable"> -->
+													{% for review in play.reviews %}
+														<div class="review" id="{{ review.review_id }}">
+															<div class="left_column">
+																<img src="{{ review.photo.photo}}" class="review_photo">
+															</div>
+															<div class="right_column black">
+																<div class="text_left">
+																	{{ review.content}}
+																</div>
+																	{% if review.link %}
+																		<a href="{{ review.link }}" class="link">&#128279;</a>
+																	{% endif %}
+																	{% if review.publication %}
+																		- {{ review.publication }}
+																	{% endif %}
+																	{% if review.writer %}
+																		({{ review.writer }})
+																	{% endif %}
+																	<!-- <br><br> -->
+															</div>
+														</div>
+													{% endfor %}
+										 		<!-- </div> -->
+												<br>
+											</div>
+									{% endif %}
+							{% endfor %}
+						</div>	
+						<button class="btn btn-default" id="save_review_order"> 	Save Order
+						</button>
+					{% endif %}
+				</div>
+
+				<br><br>
+				<div class="update_site">
+					<h2>ADD REVIEW</h2>
+					<br>
+						<form action="/add_review" method="POST" enctype="multipart/form-data">
+							<input type="text" name="quote" placeholder="quote*" required>
+							<input type="text" name="publication" placeholder="publication*" required>
+							<input type="text" name="critic" placeholder="critic*" required>
+							<input type="text" name="link" placeholder="link*" required>
+							<br><br>
+							<!-- <div class="blank_press_photo">
+		    					<label for="image">
+		      						<input type="file" class="form-control-file" name="photo" id="image" style="display:none;"/>
+			    					<div class="icon_button" id="add_press_photo_button">
+			    						<img src="../static/icons/add_photo.svg"/>
+			    					</div>
+		    					</label>
+	    					</div> -->
+	    					<br><br>
+									{% for photo in user.photos %}
+										<input type="radio" name="photo" value="{{ photo.photo_id }}">  <img src="{{ photo.photo }}" class="dropdown_photo">  
+									{% endfor %}
+							<br><br>
+							<select name="play">
+									{% for play in user.plays %}
+								  		<option value="{{ play.play_id }}">{{ play.title }}</option>
+								  	{% endfor %}
+								  	<!-- {% for film in user.films %}
+								  		<option value="film|{{ film.title }}">{{ film.title }}</option>
+								  	{% endfor %} -->
+							</select>
+							<br><br>
+							<input type="submit" value="Add a Review!" class="btn btn-default">	
+						</form>
+				</div>
+
+				<br><br><br><br><br>
+				{% if user.interviews %}
+				<h1>INTERVIEWS</h1>
+					{% for interview in user.interviews %}
+						<a href="{{ interview.link }}"><img src="{{ interview.photo }}" class="interview_photo"></a>
+					{% endfor %}
+				{% endif %}
+			</div>
+		<script src="/static/js/scripts.js"></script>
+		{% endblock %}

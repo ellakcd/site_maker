@@ -1,0 +1,4 @@
+1|1|https://www.broadway.com/videos/155303/intimacys-ella-dershowitz-on-porn-hypocrisy-breaking-boundaries/|../static/images/broadway.jpg||
+2|1|http://www.theaterinthenow.com/2016/03/spotlight-onella-dershowitz.html|../static/images/theaterinthenow.jpg||
+3|1|https://sanfrancisco.cbslocal.com/video/4061038-meet-ella-derschowitz-starring-in-actually-at-aurora-theatre/|../static/images/kpix.jpg||
+4|1|https://zackcalhoon.blogspot.com/2019/05/people-you-should-know-ella-dershowitz.html?fbclid=IwAR1E44OzDqsaGKfGC5h2vhbNbrUd2kJtVHqYSEO3uC1seAVoL0Pjjj1J0-Q|../static/images/peopleyoushouldknow.jpg||

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+	{% block title %} {{ user.name }} {% endblock %}
+	{% block head %}
+		 <link rel="stylesheet" href="../static/css/homepage.css">
+	{% endblock %}
+		{% block content %}
+			<div id="main_page">
+				<div id="main_photo_background">
+					<img src="{{ user.photo }}" id="main_photo"/>
+				</div>
+				<h1>{{ user.name }}</h1>
+				{% for union in user.unions %}
+					{{ union.union }}
+				{% endfor %}
+				{% if user.current_link %}
+					<br>
+					<a href="{{ user.current_link }}"> <h2> &#10022; Current Project &#10022; </h2> </a>
+				{% endif %}
+				{% if user.imdb %}
+					<br><br>
+					<a href="{{ user.imdb }}"> <img src="../static/images/imdb.jpg" id="imdb_pic"> </a>
+				{% endif %}
+				{% if user.bio %}
+					<br><br>
+					{{ user.bio }}
+				{% endif %}
+		{% endblock %}

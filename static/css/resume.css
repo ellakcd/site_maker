@@ -1,0 +1,73 @@
+/*.delete_project {
+	background-color: transparent;
+  	border: none;
+  	font-size: 20px;
+  	color: white;
+}
+
+.include_project {
+	background-color: transparent;
+  	border: none;
+  	font-size: 20px;
+  	color: white;
+}
+*/
+.toggle_reading {
+	width: 15px;
+  	height: 15px;
+
+  	box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.4);
+  	transition: box-shadow 0.2s;
+}
+
+tr {
+/*	 Position buttons relative to the photo. */
+	position: relative;
+/*	margin: 2.5px;*/
+}
+
+.hidden_element {
+	color: grey;
+}
+
+/*.play_container {
+	height: 200px;
+	width: 300px;
+	border-radius: 25px;
+	border: 5px solid black;
+	object-fit: contain;
+	background-color: black;
+}*/
+
+
+.play {
+/*	position: absolute;*/
+	/*display: inline-block;*/
+}
+
+.icon_button {
+	position: absolute;
+	/*display: inline-block;*/
+/*	top: 0px;
+  	left: 0px;*/
+ /* 	text-align: right;*/
+  	width: 15px;
+  	height: 15px;
+
+  	box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.4);
+  	transition: box-shadow 0.2s;
+}
+
+.icon_button:hover {
+	cursor: pointer;
+	box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.8);
+}
+
+
+tr.hidden_element .hide_project_button {
+	display: none;
+}
+
+tr:not(.hidden_element) .show_project_button {
+	display: none;
+}

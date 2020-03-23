@@ -1,0 +1,16 @@
+1|1|2|4|Actually|Anna Ziegler|Amber|Aurora Theatre Company|Tracy Ward|https://auroratheatre.org/index.php/shows-events/2018-2019-season/11018|Bay Area||
+2|1|3|5|The Wolves|Sarah Delappe|#13|Capital Stage|Nancy Carlin|https://capstage.org/the-wolves/|Bay Area||
+3|1|11|8|The Siegel|Michael Mitnick|Alice|City Lights|Mark Anderson Phillips|http://cltc.org/the-siegel/|Bay Area||
+4|1|4|9|Thomas and Sally|Thomas Bradshaw|Simone|Marin Theare Company|Jasson Minidakkis|https://www.marintheatre.org/productions/thomas-and-sally|Bay Area||
+5|1|5|7|Can You Forgive Her?|Gina Gionfriddo|Tanya|Vineyard Theater|Peter Dubois|https://www.vineyardtheatre.org/can-you-forgive-her/|Off-Broadway/NYC||
+6|1|9|6|You Will Remember Me||Berenice|Hudson Stage||http://www.hudsonstage.com/you-will-remember-me/|Regional||
+7|1|10|10|On The Verge||Alex|Attic Theater||https://www.theattictheaterco.com/on-the-verge|Off-Broadway/NYC||
+8|1|8|3|Connected||Sharon|59E59||https://www.59e59.org/shows/show-detail/connected/|Off-Broadway/NYC||
+9|1|6|1|Card and Gift||Shana|Clubbed Thumb|Ken Rus Schmoll|http://www.clubbedthumb.org/card-and-gift-2/|Off-Broadway/NYC||
+10|1|7|2|Intimacy|Thomas Bradshaw|Janet|New Group|Scott Elliott|https://thenewgroup.org/production/intimacy/|Off-Broadway/NYC||
+11|1|12|11|Visitors||Kate|MV Playhouse||http://mvplayhouse.org/theater/2015/04/visitors/|Regional||
+12|1|13|12|4000 Miles|Amy Herzog|Bec|Hudson Stage||http://www.hudsonstage.com/4000-miles/|Regional||
+13|1|14|13|A Splintered Soul||Elisa|Theater Three||http://rosalindproductions.com/a-splintered-soul/|Off-Broadway/NYC||
+14|1|15|14|Twelfth Night||Olivia|Payomet|||Regional||
+15|1|16|15|The Screenwriter's Daughter||Jenny Hecht|MV Playhouse||http://mvplayhouse.org/theater/2012/07/the-screenwriters-daughter/|Regional||
+16|1|1|16|Sovereignty|Mary Kathryn Nagle|True|Sarah Bird|Marin Theare Company|Jasson Minidakkis|True|https://www.marintheatre.org/productions/sovereignty|Bay Area||

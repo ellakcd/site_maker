@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+	{% block title %} PRESS {% endblock %}
+	{% block head %}
+		 <link rel="stylesheet" href="../static/css/press.css">
+	{% endblock %}
+		{% block content %}
+			{% if "press" not in pages %}
+				<h1> &#10039;This Page Will Not Appear On Live Site&#10039; </h1>
+			{% endif %}
+			<div>
+				{% if user.reviews %}
+					<h2>REVIEWS</h2>
+					<br>
+						{% for play in ordered_plays %}
+							{% if play.reviews %}
+									<h4 class="text_left">{{ play.title }}</h4>
+									{% for review in play.reviews %}
+									<div class="review">
+										<div class="left_column">
+											<img src="{{ review.photo.photo}}" class="review_photo">
+											<!-- <br> -->
+										</div>
+										<div class="right_column black">
+											<div class="text_left">
+												{{ review.content}}
+											</div>
+												{% if review.link %}
+													<a href="{{ review.link }}" class="link">&#128279;</a>
+												{% endif %}
+													{% if review.publication %}
+														- {{ review.publication }}
+													{% endif %}
+													{% if review.writer %}
+														({{ review.writer }})
+													{% endif %}
+											</div>
+									</div>
+									{% endfor %}
+								<br>
+							{% endif %}
+						{% endfor %}
+				{% endif %}
+
+				<br><br><br><br><br>
+				{% if user.interviews %}
+				<h2>INTERVIEWS</h2>
+					{% for interview in user.interviews %}
+						<a href="{{ interview.link }}"><img src="{{ interview.photo }}" class="interview_photo"></a>
+					{% endfor %}
+				{% endif %}
+			</div>
+		{% endblock %}

@@ -1,0 +1,53 @@
+#contact_form {
+	border: 10px solid black;
+	border-radius: 25px;
+	padding: 30px 100px 30px 100px;
+	margin: 30px;
+	background-color: var(--theme-third-color);
+	color: black;
+  	display: inline-block;
+}
+
+#contact_form_border {
+	align-self: center;
+	border: 10px solid black;
+	margin: 100px 30px 0 30px;
+	border-radius: 25px;
+	background-image: url("../images/background_image.jpg");
+	/*background-image: var(--theme-background);*/
+}
+
+/*#send_button {
+	background-color: var(--theme-third-color);
+}*/
+#representation_section {
+	display: flex;
+}
+
+.agency_container {
+	flex: 80%;
+}
+
+.hide_agency_button {
+	/*top: 10%;
+  	left: 10%;*/
+  	width: 20px;
+  	height: 20px;
+}
+
+.show_agency_button {
+	/*top: 10%;
+  	left: 10%;*/
+  	width: 20px;
+  	height: 20px;
+}
+
+.hidden_element {
+	color: grey;
+}
+
+.page_with_text {
+	display: flex;
+	flex-direction: column;
+	margin: 50px;
+}

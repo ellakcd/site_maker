@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+	{% block title %} PHOTOS {% endblock %}
+	{% block head %}
+		 <link rel="stylesheet" href="../static/css/photos.css">
+		<script>
+			  $( function() {
+				    $( ".sortable" ).sortable();
+				  } );
+		</script>
+		<style> 
+			
+		</style>
+	{% endblock %}
+	{% block content %}
+
+			<div>
+				{% if user.photos %}	
+					<h2>Production Photos</h2>
+					<div id="sortable_show_photos" class="sortable">
+						{% for photo in ordered_photos %}
+							<div class="photo_container {{ 'hidden_element' if photo.hidden else '' }}"  id="{{ photo.photo_id }}">
+								<img src="{{ photo.photo }}" class="show_photo">
+
+								<img class="include_photo icon_button show_photo_button"
+										 data-photo-id="{{ photo.photo_id }}"
+										 data-photo-type="production"
+										 src="../static/icons/add.svg"/>
+								<img class="delete_photo icon_button hide_photo_button"
+										 data-photo-id="{{ photo.photo_id }}"
+										 data-photo-type="production"
+										 src="../static/icons/remove.svg"/>
+							</div>
+						{% endfor %}
+					</div>
+					<br>
+					<button class="btn btn-default" id="save_show_photo_order"> 	Save Order
+					</button>
+					{% with messages = get_flashed_messages() %}
+		      		{% if messages %}
+		          		<div class=flashes>
+		            		{% for message in messages %}
+		                		<h3>{{ message }}</h3>
+		            		{% endfor %}
+		          		</div>
+		      		{% endif %}
+	  			{% endwith %}
+				{% endif %}
+				{% if user.misc_photos %}
+					<h2>MISC PHOTOS</h2>
+					<div id="sortable_misc_photos" class="sortable">
+						{% for misc_photo in ordered_misc_photos %}
+							<div class="photo_container {{ 'hidden_element' if photo.hidden else '' }}"  id="{{ misc_photo.misc_photo_id }}">
+								<img src="{{ misc_photo.misc_photo }}" class="show_photo">
+
+								<img class="include_photo icon_button show_photo_button"
+										 data-photo-id="{{ misc_photo.misc_photo_id }}"
+										 data-photo-type="misc"
+										 src="../static/icons/add.svg"/>
+								<img class="delete_photo icon_button hide_photo_button"
+										 data-photo-id="{{ misc_photo.misc_photo_id }}"
+										 data-photo-type="misc"
+										 src="../static/icons/remove.svg"/>
+							</div>
+						{% endfor %}
+					</div>
+					<br>
+					<button class="btn btn-default" id="save_misc_photo_order"> 	Save Order
+					</button>
+					{% with messages = get_flashed_messages() %}
+		      		{% if messages %}
+		          		<div class=flashes>
+		            		{% for message in messages %}
+		                		<h3>{{ message }}</h3>
+		            		{% endfor %}
+		          		</div>
+		      		{% endif %}
+	  			{% endwith %}
+				{% endif %}
+				<br><br>
+				{% if user.headshots %}	
+					<h2>HEADSHOTS</h2>
+					<div id="sortable_headshots" class="sortable">
+						{% for headshot in ordered_headshots %}
+							<div class="photo_container {{ 'hidden_element' if headshot.hidden else '' }}"  id="{{ headshot.headshot_id }}">
+									<img src="{{ headshot.headshot }}" class="show_photo">
+
+									<img class="include_photo icon_button show_photo_button"
+											 data-photo-id="{{ headshot.headshot_id }}"
+											 data-photo-type="headshot"
+											 src="../static/icons/add.svg"/>
+									<img class="delete_photo icon_button hide_photo_button"
+											 data-photo-id="{{ headshot.headshot_id }}"
+											 data-photo-type="headshot"
+											 src="../static/icons/remove.svg"/>
+									<form action="/make_main_photo" method="POST">
+										<input type="hidden" name="photo_id" value="{{ headshot.headshot_id }}">
+										<input type="submit" value="make main photo" class="btn btn-default">
+									</form>
+								</div>
+						{% endfor %}
+					</div>
+					<br>
+				      	<button class="btn btn-default" id="save_headshot_order"> 	Save Order
+				      	</button>
+				    {% with messages = get_flashed_messages() %}
+		      		{% if messages %}
+		          		<div class=flashes>
+		            		{% for message in messages %}
+		                		<h3>{{ message }}</h3>
+		            		{% endfor %}
+		          		</div>
+		      		{% endif %}
+	  			{% endwith %}
+				{% endif %}
+				<br><br>
+			</div>
+
+<h2>ADD PHOTO</h2>
+<div class="image-upload black centered">
+	<form action="/add_photo" id="add_photo" method="POST" enctype="multipart/form-data">
+	    	<div class="blank_photo">
+		    			<label for="image">
+	      					<input type="file" class="form-control-file" name="pic" id="image" style="display:none;"/>
+		    				<div class="icon_button" id="add_photo_button">
+		    					<img src="../static/icons/add_photo.svg"/>
+		    				</div>
+		    			</label>
+	    	</div>
+	    	<br><br>
+	    	<select name="category">
+								<option value="headshot">&#10022;Headshot&#10022;</option>
+								<option value="misc">&#10022;Miscelaneous&#10022;</option>
+								{% for play in user.plays %}
+							  		<option value="play|{{ play.play_id }}">{{ play.title }}</option>
+							  	{% endfor %}
+							  	{% for film in user.films %}
+							  		<option value="film|{{ film.film_id }}">{{ film.title }}</option>
+							  	{% endfor %}
+			</select>
+			<br><br>
+	   		<input type="submit" value="add new photo" name="new_photo" class="btn btn-default">
+     </form>
+</div>
+			<script src="/static/js/scripts.js"></script>
+		{% endblock %}

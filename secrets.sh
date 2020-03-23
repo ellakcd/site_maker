@@ -1,0 +1,1 @@
+export MAIL_PASSWORD="77ofx7*P45"

@@ -1,0 +1,238 @@
+FIX CUSTOM COLOR STUFF
+FIX REORDER FILMS USES IDS from PLAYS
+FLASH NOT WORKING AFTER REORDER
+HIDE READINGS
+
+BASE: 
+
+HOMEPAGE: 
+user can select order for bio / imdb / unions / name / current link
+when edit in place below, have it appear above too
+edit background image
+default background image
+custom color schemes - new table with users 
+
+RESUME: 
+
+
+PHOTOS: 
+flash saved photo order?
+window.reload?
+can i get rid of some classes?
+get rid of reused ids
+
+VIDEO: 
+add reel(s) as category
+make so can upload if not mp4
+margins between videos
+delete correct vid (same issue as agent delete)
+
+PRESS: 
+reorder within shows
+hide / show
+fix adding reviews
+edit in place
+
+CONTACT: 
+remove and show agent removing and showing wrong ones
+hide agent / agency 
+show agent / agency
+can put contact form or agencies at top 
+make page required?
+
+OVERALL: 
+make sure everything being added to db is safe and consistant in form and length
+is there a permanent delete?
+check on devices
+tests
+divde up css based on pages
+feature flags or git branches
+get rid of % in css
+get rid of reused ids on same page
+
+
+w dave:
+https
+copy bootstrap text for nav
+security
+domain without wwww
+
+
+
+
+PRIORITES: 
+fix drag and drop - how to have that and add play on table / delete on photos
+figure out edit in place - check values to be sure they work for table / remove play links on my_resume / color for things that are editable in place
+switch to hide instead of delete
+when delete or reorder make it reload with deletion
+edit reviews
+Can change review photos
+show hidden things in different color on edit page w switch to reactivate them 
+hidden sections table.  hidden pages table?
+if fewer things on nav bar, spread out more
+DRAG AND DROP REORDER PAGES ON NAV BAR?
+prevent deleting shows? if not, change awards, photos, press too
+misc reviews / misc awards?
+backgrounds all dark enough for white test or delete buttons black
+add readings and play inline if have others, otherwise new add section
+edit in place save text black
+for real resume how display when awards are hidden - extra *
+make edit in place inputs empty
+When user registers, pages table populates
+Make sure sections don’t show up on real site if everything in them is hidden 
+User things that don’t have put to add on home - bigger box for bio
+Get by class 
+AJAX for photo switch
+if only difference is hidden or not, only have once
+put icons instead of emojis
+default background image
+verify agent number and email are right lengths
+bio word limit in all spots
+edit in place boxes wider
+consistant color scheme
+
+
+DRAG AND DROPS: 
+resume
+press - show order and review order within show
+videos
+interviews
+tv/film
+readings
+training
+photos - include misc
+sections on photo page
+
+EDIT IN PLACE: 
+bio
+reviews
+contact
+
+ADD: 
+interview
+video
+photo - FIX - make new photos go to top instead of bottom?
+review
+award
+movie
+
+HIDE: 
+show
+photo
+award
+video
+interview
+
+EDIT: 
+main photo
+background image
+
+LITTLE THINGS: 
+round buttons
+edit box colors
+fix contact form inputs width
+asterisk for awards grey if hidden
+nav bar text different for hidden and non hidden pages
+stop using percents in positioning
+NO EMOJIS
+background protect
+center photo input options dropdown
+remove line behind imdb
+
+SECURITY: 
+logout after certain time
+encrypt passwords
+
+MAIN PAGE: 
+Welcome!
+Go to resume first
+you can drag and drop most things to reorder
+you can delete and add at any point
+you can edit most things by clicking on them
+You can always go to your pagepage and update which pages to show.  Don't worry: if you hide a page, the stuff on it won't dissapear forever.  
+have fun! 
+
+
+
+order films
+photo misc - add w category
+add and remove current project - associate it with closing date when add it - display map and dates
+award categories
+stash of photos on site to choose from - for reviews, show all pics from that play
+Upload folder of photos
+factor out favorite unicode
+link in plays - update on my_resume / add play
+multiple categories for same award
+upload videos
+Make color schemes better
+pass around user id
+Check user in session and user same as page 
+Store users by email - check email duplicates
+When log in take to your own page 
+factor out background image and store in db / option if yes or no
+where should loggout bring you?
+gmail replyto
+Check right page on base
+change to session.get on routes
+Show this page won’t exist if user.page doesn’t include - in red?
+
+mapping from domain to user id
+Use js to update custom color scheme 
+
+
+
+DB: 
+combine film and TV awards
+Hidden sections
+Current show as FK in table?
+check what is nullable and make sure same as forms
+since many have same pages and same agencies factor out?
+make SKs not nullable again
+SWITCH everything to many to many w union tables?
+
+
+FOR USERS:
+change ellaactingingsite to something more universal 
+Basic registration page to fill in user table / pick color scheme from dropdown (I do lights and darks) - doesn't inherit from base 
+Then displays blank version of base - tell them to fill out resume first
+On resume page - Add play and award info / reading / films and award info / training
+On photo page - Add photo - specify if from show or headshot
+On press page - Add review and photo / Add interview and link and image
+On video page - Add video w link
+Contact page should be makeable from user info
+passwords: encrypt / what happens if wrong
+user can change color of border around main - Option background image
+when click on photo: can delete / reorder / make main photo
+register for site
+
+CHOICES: 
+rounded or not rounded 
+
+REFACTORING: 
+one method for reordering
+urls 
+basic pages and have update pages extend them 
+css - make classes into ids and use broader classes for styling
+functions
+hidden and not hidden (just have hidden class not whole new code)
+
+
+
+
+
+FOR ME: 
+Center text in header
+login on footer
+flex 
+set page size at 900px
+add jonathan photos
+add silly string award
+video clips: silly string / bnb / affair / two bit / pitching / phil spector
+cut together bnb and pitching tents add more pitching tents
+links for films - ways to see films / tv 
+bio?
+more links to reviews? / mv review?
+title for videos
+store password in env rather than db
+darken nav bar
+off broadway nyc v regional 

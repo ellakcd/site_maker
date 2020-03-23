@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+	{% block title %} VIDEOS {% endblock %}
+	{% block head %}
+		 <link rel="stylesheet" href="../static/css/videos.css">
+	{% endblock %}
+		{% block content %}
+			{% if "videos" not in pages %}
+				<h1> &#10039;This Page Will Not Appear On Live Site&#10039; </h1>
+			{% endif %}
+			<div>
+				{% if user.videos %}	
+					<!-- <h2>VIDEOS</h2>
+					<br> -->
+						{% if theater_clips %}
+							<h2> THEATER CLIPS &#x26; TRAILERS </h2>
+							<br>
+								{% for video in theater_clips %}
+									{% if video.youtube %}
+										<iframe src="https://www.youtube.com/embed/{{ video.video }}"></iframe>
+									{% else %}
+										<video controls>
+											<source src="{{ video.video }}" type="video/mp4">
+										</video>
+									{% endif %}
+								{% endfor %}
+						{% endif %}
+						<br><br>
+						{% if film_clips %}
+							<h2> FILM CLIPS &#x26; TRAILERS </h2>
+							<br>
+								{% for video in film_clips %}
+									{% if video.youtube %}
+										<iframe src="https://www.youtube.com/embed/{{ video.video }}"></iframe>
+									{% else %}
+										<video controls>
+											<source src="{{ video.video }}" type="video/mp4">
+										</video>
+									{% endif %}
+								{% endfor %}
+						{% endif %}
+						<br><br>
+						{% if interviews %}
+							<h2> INTERVIEWS </h2>
+							<br>
+								{% for video in interviews %}
+									{% if video.youtube %}
+										<iframe src="https://www.youtube.com/embed/{{ video.video }}"></iframe>
+									{% else %}
+										<video controls>
+											<source src="{{ video.video }}" type="video/mp4">
+										</video>
+									{% endif %}
+								{% endfor %}
+						{% endif %}
+				{% endif %}
+			</div>
+		{% endblock %}

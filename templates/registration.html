@@ -1,0 +1,60 @@
+<!doctype html>
+	<html>
+		<head>
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    		<script src="/static/js/jquery.jeditable.mini.js"></script>
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    		<link rel="stylesheet" href="../static/css/stylesheet.css">
+			<link rel="stylesheet" href="../static/css/registration.css">
+			<title>REGISTRATION</title>
+		</head>
+			<div class="update_site registration_form">
+				<h2>CREATE ACTING WEBSITE</h2>
+				<br>
+					<form action="/add_user" method="POST" enctype="multipart/form-data">
+							<input type="text" name="name" placeholder="name*" required>
+							<input type="email" name="email" placeholder="email*" required>
+							<input type="password" name="password" placeholder="password*" required>
+							<input type="text" name="imdb" placeholder="imdb?">
+							<input type="text" name="current_show" placeholder="current show link?">
+							<br><br>
+							Bio?: 
+							<br>
+							<textarea maxlength="500" name="bio" id="registration_bio" required>
+							</textarea>
+							<br><br>
+						Main Photo: 
+							<br>
+							<div class="image-upload black centered">
+							<form action="/add_photo" id="add_registration_photo" method="POST" enctype="multipart/form-data">
+	    					<div class="blank_photo">
+		    				<label for="registration_image">
+	      					<input type="file" class="form-control-file" name="pic" id="registration_image" style="display:none;"/>
+		    				<div class="icon_button" id="add_registration_photo_button">
+		    					<img src="../static/icons/add_photo.svg"/>
+		    				</div>
+		    				</label>
+	    					</div>
+	    					<br><br>
+<!-- 	   						<input type="submit" value="add new photo" name="new_photo" class="btn btn-default"> -->
+     						</form>
+							</div>
+							<br>
+						Website Color Scheme:
+							<br>
+							<select name="color">
+							{% for color in colors %}
+								<option value="{{ color.color_scheme_id }}">{{ color.color_name }}</option>
+							{% endfor %}
+							</select>
+							<br><br><br>
+							<input type="submit" value="Create Your Site" class="btn btn-default">	
+						</form>
+			</div>
+			<script src="/static/js/scripts.js"></script>
+	</html>
+

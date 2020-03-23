@@ -1,0 +1,36 @@
+#main_photo {
+	height: 600px;
+	width: 90%;
+	border: 10px solid black;
+	border-radius: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	object-fit: contain;
+	background-color: black;
+}
+
+#main_photo_background {
+	border: 10px solid black;
+	padding: 30px;
+	margin-left: 10%;
+	margin-right: 10%;
+	border: 10px solid black;
+	border-radius: 25px;
+	background-image: url("../images/background_image.jpg");
+	/*background-image: var(--theme-background);*/
+	position: relative;
+}
+
+#imdb_pic {
+	border: 1px solid black;
+	border-radius: 10px;
+	height: 50px;
+	width: 100px;
+	margin-left: auto;
+  	margin-right: auto;
+}
+
+#main_photo_upload_button {
+	top: 10%;
+  	left: 90%;
+}

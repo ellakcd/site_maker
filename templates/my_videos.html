@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+	{% block title %} VIDEOS {% endblock %}
+	{% block head %}
+		 <link rel="stylesheet" href="../static/css/videos.css">
+	{% endblock %}
+		{% block content %}
+			<div>
+				{% if user.videos %}	
+						{% if theater_clips %}
+							<h2> THEATER CLIPS &#x26; TRAILERS </h2>
+							<br>
+								{% for video in theater_clips %}
+									<div class="video_container">
+										{% if not video.hidden %}
+											<form action="/hide_video" method="POST">
+									  			<label for="hide">
+									  			<input type="hidden" name="video_id" value="{{ video.video_id }}">
+									  			<input type="submit" value="show_video" name="hide" id="hide" class="hide_button" style="display:none;">
+									  			<div class="icon_button hide_video_button">
+										    		<img src="../static/icons/remove.svg"/>
+										    	</div>
+									  			</label>
+									  		</form>
+												{% if video.youtube %}
+													<iframe src="https://www.youtube.com/embed/{{ video.video }}"></iframe>
+												{% else %}
+													<video controls>
+														<source src="{{ video.video }}" type="video/mp4">
+													</video>
+												{% endif %}
+										{% else %}
+							  					<form action="/show_video" method="POST">
+								  					<label for="show">
+								  					<input type="hidden" name="video_id" value="{{ video.video_id }}">
+								  					<input type="submit" value="show_video" name="show" id="show" class="show_button" style="display:none;">
+								  					<div class="icon_button show_video_button">
+									    				<img src="../static/icons/add.svg"/>
+									    			</div>
+								  					</label>
+								  				</form>
+												{% if video.youtube %}
+													<iframe src="https://www.youtube.com/embed/{{ video.video }}" class="hidden_element"></iframe>
+												{% else %}
+													<video controls>
+														<source src="{{ video.video }}" class="hidden_element" type="video/mp4">
+													</video>
+												{% endif %}
+										{% endif %}
+									</div>
+								{% endfor %}
+						{% endif %}
+						<br><br>
+						{% if film_clips %}
+							<h2> FILM CLIPS &#x26; TRAILERS </h2>
+							<br>
+								{% for video in film_clips %}
+									<div class="video_container">
+										{% if not video.hidden %}
+											<form action="/hide_video" method="POST">
+									  			<label for="hide">
+									  			<input type="hidden" name="video_id" value="{{ video.video_id }}">
+									  			<input type="submit" value="show_video" name="hide" id="hide" class="hide_button" style="display:none;">
+									  			<div class="icon_button hide_video_button">
+										    		<img src="../static/icons/remove.svg"/>
+										    	</div>
+									  			</label>
+									  		</form>
+												{% if video.youtube %}
+													<iframe src="https://www.youtube.com/embed/{{ video.video }}"></iframe>
+												{% else %}
+													<video controls>
+														<source src="{{ video.video }}" type="video/mp4">
+													</video>
+												{% endif %}
+										{% else %}
+							  					<form action="/show_video" method="POST">
+								  					<label for="show">
+								  					<input type="hidden" name="video_id" value="{{ video.video_id }}">
+								  					<input type="submit" value="show_video" name="show" id="show" class="show_button" style="display:none;">
+								  					<div class="icon_button show_video_button">
+									    				<img src="../static/icons/add.svg"/>
+									    			</div>
+								  					</label>
+								  				</form>
+												{% if video.youtube %}
+													<iframe src="https://www.youtube.com/embed/{{ video.video }}" class="hidden_element"></iframe>
+												{% else %}
+													<video controls>
+														<source src="{{ video.video }}" class="hidden_element" type="video/mp4">
+													</video>
+												{% endif %}
+										{% endif %}
+									</div>
+								{% endfor %}
+						{% endif %}
+						<br><br>
+						{% if interviews %}
+							<h2> INTERVIEWS </h2>
+							<br>
+								{% for video in interviews %}
+									<div class="video_container">
+										{% if not video.hidden %}
+											<form action="/hide_video" method="POST">
+									  			<label for="hide">
+									  			<input type="hidden" name="video_id" value="{{ video.video_id }}">
+									  			<input type="submit" value="show_video" name="hide" id="hide" class="hide_button" style="display:none;">
+									  			<div class="icon_button hide_video_button">
+										    		<img src="../static/icons/remove.svg"/>
+										    	</div>
+									  			</label>
+									  		</form>
+												{% if video.youtube %}
+													<iframe src="https://www.youtube.com/embed/{{ video.video }}"></iframe>
+												{% else %}
+													<video controls>
+														<source src="{{ video.video }}" type="video/mp4">
+													</video>
+												{% endif %}
+										{% else %}
+							  					<form action="/show_video" method="POST">
+								  					<label for="show">
+								  					<input type="hidden" name="video_id" value="{{ video.video_id }}">
+								  					<input type="submit" value="show_video" name="show" id="show" class="show_button" style="display:none;">
+								  					<div class="icon_button show_video_button">
+									    				<img src="../static/icons/add.svg"/>
+									    			</div>
+								  					</label>
+								  				</form>
+												{% if video.youtube %}
+													<iframe src="https://www.youtube.com/embed/{{ video.video }}" class="hidden_element"></iframe>
+												{% else %}
+													<video controls>
+														<source src="{{ video.video }}" class="hidden_element" type="video/mp4">
+													</video>
+												{% endif %}
+										{% endif %}
+									</div>
+								{% endfor %}
+						{% endif %}
+				{% endif %}
+			</div>
+			<br><br>
+			<h2>ADD VIDEO</h2>
+			<br>
+				<div class="image-upload black centered">
+					<form action="/add_video" id="add_video" method="POST" enctype="multipart/form-data">
+							https://www.youtube.com/watch?v=<input type="text" name="youtube">
+							<br>
+							OR
+							<br>
+					    	<div class="blank_video">
+						    			<label for="image">
+					      					<input type="file" class="form-control-file" name="video" id="image" style="display:none;"/>
+						    				<div class="icon_button" id="add_video_button">
+						    					<img src="../static/icons/add_video.svg"/>
+						    				</div>
+						    			</label>
+					    	</div>
+					    	<br><br>
+					    	<select name="category">
+												<option value="theater">&#10022;Theater&#10022;</option>
+												<option value="film">&#10022;Film&#10022;</option>
+												<option value="interview">&#10022;Interview&#10022;</option>
+							</select>
+							<br><br>
+					   		<input type="submit" value="add new video" name="new_video" class="btn btn-default">
+				     </form>
+				</div>
+		{% endblock %}

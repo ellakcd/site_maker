@@ -1,0 +1,94 @@
+<!doctype html>
+	<html>
+		<head>
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    		<script src="/static/js/jquery.jeditable.mini.js"></script>
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    		<link rel="stylesheet" href="../static/css/stylesheet.css">
+			<title>{% block title %} title goes here {% endblock %}</title>
+			{% block head %}{% endblock %}
+			<style>
+				:root {
+					--theme-first-color: {{ user.color_scheme.color_one }};
+					--theme-second-color: {{ user.color_scheme.color_two }};
+					--theme-third-color: {{ user.color_scheme.color_three }};
+					--theme-text-color: {{ user.color_scheme.color_four }};
+	/*				--theme-update-color-one: white;
+					--theme-update-color-two: grey;*/
+					--theme-background: url("{{ user.background_image }}");
+				}
+			</style>
+		</head>
+		<body>
+			{% set all_pages = ["resume", "photos", "press", "videos", "contact"] %}
+			{% set user_pages = [] %}
+			{% for page in user.pages %}
+				{% set user_pages = user_pages.append(page.page) %}
+			{% endfor %}
+      		{% if "current_user" in session %}
+      			<nav class="navbar navbar-default">
+				  	<div class="container-fluid">
+				   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      			<ul class="nav navbar-nav">	
+				      				<li class="dropdown">
+          								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>&#10039; HOME</b> <span class="caret"></span></a>
+	          							<ul class="dropdown-menu">
+						        			<li><a href="/">Real Mode</a></li>
+						        			<li><a href="/my_homepage">Edit Mode</a></li>
+					        			</ul>
+				        			</li>	
+				        			{% for page in all_pages %}	
+				        			<li class="dropdown">   
+          									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>
+          											<span class="uppercase">
+          												{% if page not in user_pages %}
+          													<span class="hidden_page">
+          														{{ page }}
+          													</span>
+          												{% else %}
+          													<b>{{ page }}</b>
+          												{% endif %}
+          											</span>
+          										</b> <span class="caret"></span></a>
+	          									<ul class="dropdown-menu">
+						        					<li><a href="/{{ page }}">Real Mode</a></li>
+						        			<li><a href="/my_{{ page }}">Edit Mode</a></li>
+					        			</ul>	
+				        			</li>
+				        			{% endfor %}
+							      	<form action="/logout" class="navbar-form navbar-right">
+				        				<div class="form-group">
+				        				</div>
+				      					<button type="submit" class="btn btn-default"> &#9755;</button>
+				      				</form>
+      							</div>
+      						</div>
+      			   		</nav>
+      			{% else %}
+      			   		<nav class="navbar navbar-default">
+				  			<div class="container-fluid">
+				   				<div class="collapse navbar-collapse my_flex" id="bs-example-navbar-collapse-1">
+				   					 <a class="navbar-brand vertically_centered" href="/"> &#10039; HOME </a>
+								      	<ul class="nav navbar-nav vertically_centered">
+								      		{% for page in user.pages %}
+									            <li><a href="/{{ page.page }}"><span class="uppercase">{{ page.page }}</span></a></li>
+									        {% endfor %}
+								      	</ul>
+									      	<form action="/login" class="navbar-form navbar-right" method="POST">
+						        				<div class="form-group">
+					      							<input type="password" id="password_input" name="password" placeholder="PASSWORD" required><br>
+					      						</div>
+					    						<button type="submit" class="btn btn-default"> &#9755;</button>
+				      						</form>
+      							</div>
+      						</div>
+      					</nav>
+      			{% endif %}
+
+				<div class="page_with_text">{% block content %} content goes here {% endblock %}</div>
+		</body>
+	</html>

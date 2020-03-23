@@ -1,0 +1,88 @@
+.sortable {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+h2 {
+	text-transform: uppercase;
+}
+
+.photo_container {
+	/* Position buttons relative to the photo. */
+	position: relative;
+	margin: 2.5px;
+}
+
+.photo_container.hidden_element .show_photo {
+	border-color: grey;
+}
+
+.photo_container .show_photo {
+	height: 200px;
+	width: 300px;
+	border-radius: 25px;
+	border: 5px solid black;
+	object-fit: contain;
+	background-color: black;
+}
+
+.show_photo {
+	height: 200px;
+	width: 300px;
+	border-radius: 25px;
+	border: 5px solid black;
+	object-fit: contain;
+	background-color: black;
+}
+
+.photo_container .icon_button {
+	position: absolute;
+	top: 24px;
+  	left: 26px;
+  	width: 20px;
+  	height: 20px;
+
+  	box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.4);
+  	transition: box-shadow 0.2s;
+}
+
+.photo_container .icon_button:hover {
+	cursor: pointer;
+	box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.8);
+}
+
+.photo_container.hidden_element .hide_photo_button {
+	display: none;
+}
+
+.photo_container:not(.hidden_element) .show_photo_button {
+	display: none;
+}
+
+#add_photo_button {
+	top: 50%;
+  	left: 50%;
+}
+
+.make_main_photo {
+	position: absolute;
+	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	background-color: transparent;
+  	border: none;
+  	font-size: 20px;
+  	color: white;
+}
+
+.blank_photo {
+	position: relative;
+	display: inline-block;
+	height: 200px;
+	width: 300px;
+	border-radius: 25px;
+	border: 5px solid black;
+	background-color: black;
+}
