@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 	{% block title %} RESUME {% endblock %}
 	{% block head %}
-		<link rel="stylesheet" href="../static/css/resume.css">
+		<link rel="stylesheet" href="/static/css/resume.css">
 		<script>
 			  $( function() {
 				    $( "tbody" ).sortable();
@@ -21,11 +21,11 @@
 										<img class="include_project icon_button show_project_button"
 												 data-project-id="{{ play.play_id }}"
 												 data-project-type="play"
-												 src="../static/icons/add.svg"/>
+												 src="/static/icons/add.svg"/>
 										<img class="delete_project icon_button hide_project_button"
 												 data-project-id="{{ play.play_id }}"
 												 data-project-type="play"
-												 src="../static/icons/remove.svg"/>
+												 src="/static/icons/remove.svg"/>
 										<div class="play">
 									</td>
 									<td>
@@ -135,11 +135,11 @@
 								<img class="include_project icon_button show_project_button"
 										 data-project-id="{{ reading.reading_id }}"
 										 data-project-type="reading"
-										 src="../static/icons/add.svg"/>
+										 src="/static/icons/add.svg"/>
 								<img class="delete_project icon_button hide_project_button"
 										 data-project-id="{{ reading.reading_id }}"
 										 data-project-type="reading"
-										 src="../static/icons/remove.svg"/>
+										 src="/static/icons/remove.svg"/>
 								{{ reading.reading }} &#10022;
 							</div> -->
 							{% if not reading.hidden %}
@@ -179,11 +179,11 @@
 										<img class="include_project icon_button show_project_button"
 												 data-project-id="{{ film.film_id }}"
 												 data-project-type="film"
-												 src="../static/icons/add.svg"/>
+												 src="/static/icons/add.svg"/>
 										<img class="delete_project icon_button hide_project_button"
 												 data-project-id="{{ film.film_id }}"
 												 data-project-type="film"
-												 src="../static/icons/remove.svg"/>
+												 src="/static/icons/remove.svg"/>
 										<div class="film">
 									</td>
 									<td>

@@ -13,4 +13,4 @@
 13|1|14|13|A Splintered Soul||Elisa|Theater Three||http://rosalindproductions.com/a-splintered-soul/|Off-Broadway/NYC||
 14|1|15|14|Twelfth Night||Olivia|Payomet|||Regional||
 15|1|16|15|The Screenwriter's Daughter||Jenny Hecht|MV Playhouse||http://mvplayhouse.org/theater/2012/07/the-screenwriters-daughter/|Regional||
-16|1|1|16|Sovereignty|Mary Kathryn Nagle|True|Sarah Bird|Marin Theare Company|Jasson Minidakkis|True|https://www.marintheatre.org/productions/sovereignty|Bay Area||
+16|1|1|16|Sovereignty|Mary Kathryn Nagle|Sarah Bird|Marin Theare Company|Jasson Minidakkis|True|https://www.marintheatre.org/productions/sovereignty|Bay Area||

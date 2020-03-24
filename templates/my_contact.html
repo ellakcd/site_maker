@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 	{% block title %} CONTACT {% endblock %}
 	{% block head %}
-		 <link rel="stylesheet" href="../static/css/contact.css">
+		 <link rel="stylesheet" href="/static/css/contact.css">
 	{% endblock %}
 		{% block content %}
 		{% if user.agencies %}
@@ -19,7 +19,7 @@
 					  						<input type="hidden" name="agent_id" value="{{ agent.agent_id }}">
 					  						<input type="submit" value="hide_agent" name="hide" id="hide-{{ agent.agent_id }}" class="hide_button" style="display:none;">
 					  						<div class="icon_button hide_agency_button">
-						    					<img src="../static/icons/remove.svg"/>
+						    					<img src="/static/icons/remove.svg"/>
 						    				</div>
 					  						</label>
 					  					</form>
@@ -35,7 +35,7 @@
 						  						<input type="hidden" name="agent_id" value="{{ agent.agent_id }}">
 						  						<input type="submit" value="show_agent" name="show" id="show-{{ agent.agent_id }}" class="show_button" style="display:none;">
 						  						<div class="icon_button show_agency_button">
-							    					<img src="../static/icons/add.svg"/>
+							    					<img src="/static/icons/add.svg"/>
 							    				</div>
 						  						</label>
 						  					</form>

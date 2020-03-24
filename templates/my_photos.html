@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 	{% block title %} PHOTOS {% endblock %}
 	{% block head %}
-		 <link rel="stylesheet" href="../static/css/photos.css">
+		 <link rel="stylesheet" href="/static/css/photos.css">
 		<script>
 			  $( function() {
 				    $( ".sortable" ).sortable();
@@ -24,11 +24,11 @@
 								<img class="include_photo icon_button show_photo_button"
 										 data-photo-id="{{ photo.photo_id }}"
 										 data-photo-type="production"
-										 src="../static/icons/add.svg"/>
+										 src="/static/icons/add.svg"/>
 								<img class="delete_photo icon_button hide_photo_button"
 										 data-photo-id="{{ photo.photo_id }}"
 										 data-photo-type="production"
-										 src="../static/icons/remove.svg"/>
+										 src="/static/icons/remove.svg"/>
 							</div>
 						{% endfor %}
 					</div>
@@ -55,11 +55,11 @@
 								<img class="include_photo icon_button show_photo_button"
 										 data-photo-id="{{ misc_photo.misc_photo_id }}"
 										 data-photo-type="misc"
-										 src="../static/icons/add.svg"/>
+										 src="/static/icons/add.svg"/>
 								<img class="delete_photo icon_button hide_photo_button"
 										 data-photo-id="{{ misc_photo.misc_photo_id }}"
 										 data-photo-type="misc"
-										 src="../static/icons/remove.svg"/>
+										 src="/static/icons/remove.svg"/>
 							</div>
 						{% endfor %}
 					</div>
@@ -87,11 +87,11 @@
 									<img class="include_photo icon_button show_photo_button"
 											 data-photo-id="{{ headshot.headshot_id }}"
 											 data-photo-type="headshot"
-											 src="../static/icons/add.svg"/>
+											 src="/static/icons/add.svg"/>
 									<img class="delete_photo icon_button hide_photo_button"
 											 data-photo-id="{{ headshot.headshot_id }}"
 											 data-photo-type="headshot"
-											 src="../static/icons/remove.svg"/>
+											 src="/static/icons/remove.svg"/>
 									<form action="/make_main_photo" method="POST">
 										<input type="hidden" name="photo_id" value="{{ headshot.headshot_id }}">
 										<input type="submit" value="make main photo" class="btn btn-default">
@@ -122,7 +122,7 @@
 		    			<label for="image">
 	      					<input type="file" class="form-control-file" name="pic" id="image" style="display:none;"/>
 		    				<div class="icon_button" id="add_photo_button">
-		    					<img src="../static/icons/add_photo.svg"/>
+		    					<img src="/static/icons/add_photo.svg"/>
 		    				</div>
 		    			</label>
 	    	</div>

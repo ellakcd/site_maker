@@ -1,6 +1,6 @@
 from model import connect_to_db, db 
 from model import User, Play, Photo, Review, Interview, Film
-from flask import (Flask, render_template, request, redirect)
+from flask import (Flask, render_template, session, request, redirect)
 
 
 UPLOAD_FOLDER = "static/uploaded_images/"
@@ -14,8 +14,19 @@ def save_photo(photo_name):
     photo_name_path = UPLOAD_FOLDER + photo_name.filename
     photo_name.save(photo_name_path)
 
-    return "../{}".format(photo_name_path)
+    return "/{}".format(photo_name_path)
 
+
+def login(user, password):
+	print(user, password, user.password, user.user_id)
+	print(password == user.password)
+
+	try:
+		if password == user.password:
+			session["current_user"] = user.user_id
+			return redirect("users/{}/my_homepage".format(user.user_id))
+	except:
+		return redirect("users/{}/homepage".format(user.user_id))
 
 
 def getpages(user):

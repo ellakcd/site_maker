@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 	{% block title %} VIDEOS {% endblock %}
 	{% block head %}
-		 <link rel="stylesheet" href="../static/css/videos.css">
+		 <link rel="stylesheet" href="/static/css/videos.css">
 	{% endblock %}
 		{% block content %}
 			<div>
@@ -17,7 +17,7 @@
 									  			<input type="hidden" name="video_id" value="{{ video.video_id }}">
 									  			<input type="submit" value="show_video" name="hide" id="hide" class="hide_button" style="display:none;">
 									  			<div class="icon_button hide_video_button">
-										    		<img src="../static/icons/remove.svg"/>
+										    		<img src="/static/icons/remove.svg"/>
 										    	</div>
 									  			</label>
 									  		</form>
@@ -34,7 +34,7 @@
 								  					<input type="hidden" name="video_id" value="{{ video.video_id }}">
 								  					<input type="submit" value="show_video" name="show" id="show" class="show_button" style="display:none;">
 								  					<div class="icon_button show_video_button">
-									    				<img src="../static/icons/add.svg"/>
+									    				<img src="/static/icons/add.svg"/>
 									    			</div>
 								  					</label>
 								  				</form>
@@ -61,7 +61,7 @@
 									  			<input type="hidden" name="video_id" value="{{ video.video_id }}">
 									  			<input type="submit" value="show_video" name="hide" id="hide" class="hide_button" style="display:none;">
 									  			<div class="icon_button hide_video_button">
-										    		<img src="../static/icons/remove.svg"/>
+										    		<img src="/static/icons/remove.svg"/>
 										    	</div>
 									  			</label>
 									  		</form>
@@ -78,7 +78,7 @@
 								  					<input type="hidden" name="video_id" value="{{ video.video_id }}">
 								  					<input type="submit" value="show_video" name="show" id="show" class="show_button" style="display:none;">
 								  					<div class="icon_button show_video_button">
-									    				<img src="../static/icons/add.svg"/>
+									    				<img src="/static/icons/add.svg"/>
 									    			</div>
 								  					</label>
 								  				</form>
@@ -105,7 +105,7 @@
 									  			<input type="hidden" name="video_id" value="{{ video.video_id }}">
 									  			<input type="submit" value="show_video" name="hide" id="hide" class="hide_button" style="display:none;">
 									  			<div class="icon_button hide_video_button">
-										    		<img src="../static/icons/remove.svg"/>
+										    		<img src="/static/icons/remove.svg"/>
 										    	</div>
 									  			</label>
 									  		</form>
@@ -122,7 +122,7 @@
 								  					<input type="hidden" name="video_id" value="{{ video.video_id }}">
 								  					<input type="submit" value="show_video" name="show" id="show" class="show_button" style="display:none;">
 								  					<div class="icon_button show_video_button">
-									    				<img src="../static/icons/add.svg"/>
+									    				<img src="/static/icons/add.svg"/>
 									    			</div>
 								  					</label>
 								  				</form>
@@ -152,7 +152,7 @@
 						    			<label for="image">
 					      					<input type="file" class="form-control-file" name="video" id="image" style="display:none;"/>
 						    				<div class="icon_button" id="add_video_button">
-						    					<img src="../static/icons/add_video.svg"/>
+						    					<img src="/static/icons/add_video.svg"/>
 						    				</div>
 						    			</label>
 					    	</div>

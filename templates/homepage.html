@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 	{% block title %} {{ user.name }} {% endblock %}
 	{% block head %}
-		 <link rel="stylesheet" href="../static/css/homepage.css">
+		 <link rel="stylesheet" href="/static/css/homepage.css">
 	{% endblock %}
 		{% block content %}
 			<div id="main_page">
@@ -18,7 +18,7 @@
 				{% endif %}
 				{% if user.imdb %}
 					<br><br>
-					<a href="{{ user.imdb }}"> <img src="../static/images/imdb.jpg" id="imdb_pic"> </a>
+					<a href="{{ user.imdb }}"> <img src="/static/images/imdb.jpg" id="imdb_pic"> </a>
 				{% endif %}
 				{% if user.bio %}
 					<br><br>

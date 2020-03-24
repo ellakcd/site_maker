@@ -3,7 +3,7 @@
 	{% block head %}
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- 	<link rel="stylesheet" href="../static/css/homepage.css">
+ 	<link rel="stylesheet" href="/static/css/homepage.css">
 	{% endblock %}
 	{% block content %}
 		<div class="image-upload">
@@ -15,7 +15,7 @@
 				    			<label for="image">
 			      					<input type="file" class="form-control-file" name="image" id="image" style="display:none;"/>
 				    				<div id="main_photo_upload_button" class="icon_button">
-				    					<img src="../static/icons/edit.svg"/>
+				    					<img src="/static/icons/edit.svg"/>
 				    				</div>
 				    			</label>
 			    			</div>
@@ -36,7 +36,7 @@
 				{% endif %}
 				{% if user.imdb %}
 					<br><br>
-					<a href="{{ user.imdb }}"> <img src="../static/images/imdb.jpg" id="imdb_pic"> </a>
+					<a href="{{ user.imdb }}"> <img src="/static/images/imdb.jpg" id="imdb_pic"> </a>
 				{% endif %}
 				{% if user.bio %}
 					<br><br>

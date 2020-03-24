@@ -1,1 +1,1 @@
-1|False||Ella Dershowitz|ella.dershowitz@gmail.com|password||../static/images/main_photo.jpg|https://www.imdb.com/name/nm3311494/||6|../images/background_image.jpg
+1|False||Ella Dershowitz|ella.dershowitz@gmail.com|password||/static/images/main_photo.jpg|https://www.imdb.com/name/nm3311494/||6|/images/background_image.jpg
